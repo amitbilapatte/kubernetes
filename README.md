@@ -20,14 +20,14 @@
 - `minikube status`
 - `minikube stop`
 
-  *now create repo on docker hub by name **kub-node-app** :*
+  *now create repo on docker hub by name **kub-first-app** :*
 
-- `docker tag node-app amitreddy/kub-node-app`
-- `docker push amitreddy/kub-node-app`
+- `docker tag node-app amitreddy/kub-first-app`
+- `docker push amitreddy/kub-first-app`
 
   *now deploy docker image on kubectl:*
 
-- `kubectl create deployment first-app --image=amitreddy/kub-node-app`
+- `kubectl create deployment first-app --image=amitreddy/kub-first-app`
 
   *check deployments:*
 
@@ -42,14 +42,14 @@
 
 - `kubectl expose deployment first-app --type=LoadBalancer --port=8080`<!-- expose port number  & specify load balancer for distributing load evenly across all pods(containers) ->
 - `kubectl get services`
-- `minikube service kub-node-app` <!-- it will show port number for deplyed service and also rdirect to this service on browser-->
+- `minikube service kub-first-app` <!-- it will show port number for deplyed service and also rdirect to this service on browser-->
 
   *To scale the deployments:*
 
-- `kubectl scale deployment/kub-first-node-app --replicas=3` <!-- increase pods(containers) replicas to 3 to manage traffic ->
+- `kubectl scale deployment/kub-first-app --replicas=3` <!-- increase pods(containers) replicas to 3 to manage traffic ->
 - `kubectl get pods`
 
   *To delete the deployments:*
 
-- `kubectl delete service kub-node-app`
+- `kubectl delete service kub-first-app`
 - `kubectl get pods`

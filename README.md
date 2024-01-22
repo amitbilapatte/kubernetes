@@ -53,3 +53,13 @@
 
 - `kubectl delete service kub-first-app`
 - `kubectl get pods`
+
+  *To Update the deployments:*
+- rebuild the image with new tag/version `docker build -t amitreddy/kub-first-app:2 .`
+- check deployment is still there `kubectl get deployment`
+- push image to docker hub `docker push amitreddy/kub-first-app:2`
+- update deployment image `kubectl set image deployment/first-app kubernetes-node-app=amitreddy/kub-first-app:2` 
+  `kubernetes-node-app` is the image name you can find in pods whose image is to be updated in minikube dashboard
+- now roll out this deployment to see changes `kubectl rollout status deployment/first-app`
+- `kubectl delete service kub-first-app`
+- `kubectl get pods`

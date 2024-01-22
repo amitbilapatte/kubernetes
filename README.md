@@ -63,3 +63,14 @@
 - now roll out this deployment to see changes `kubectl rollout status deployment/first-app`
 - `kubectl delete service kub-first-app`
 - `kubectl get pods`
+
+  *To Update the deployments:*
+- update deployment image with tag/version that doesn't exist so that it fails `kubectl set image deployment/first-app kubernetes-node-app=amitreddy/kub-first-app:3`
+- check status of new rollout`kubectl rollout status deployment/first-app`
+  here old pod doesn't shut down till new pod deployment is successfully deployed. so it will never succeed as we have entered image name tag that doesn't exist.
+- to check this `kubectl get pods` it will show "ImagePullBackOff" status for new deployment. and it fails.
+- To rollback this deployment to previous deployment `kubectl rollout undo deployment/first-app`
+- To go back to older deployment :
+  - `kubectl rollout history deployment/first-app` it will list down all revisions for this deployment
+  - To see details about a partucular revision: `kubectl rollout history deployment/first-app --revision=3`
+  - To go back to specific revision `kubectl rollout undo deployment/first-app --to-revision=1`

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: second-app-deployment
+  # labels:
+  #   app: nginx
+spec:
+  replicas: 1
+  selector:
+    # matchExpressions:
+    matchLabels:
+      app: second-app
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: second-app
+        tier: backend
+    spec:
+      containers:
+        - name: second-node-app
+          image: amitreddy/kuberentes-node-app:2
+        # - name: ...  --\\__ for adding multiple images
+        # image: ...   --//
+        # ports:
+        #   - containerPort: 8080

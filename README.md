@@ -73,4 +73,10 @@
 - To go back to older deployment :
   - `kubectl rollout history deployment/first-app` it will list down all revisions for this deployment
   - To see details about a partucular revision: `kubectl rollout history deployment/first-app --revision=3`
-  - To go back to specific revision `kubectl rollout undo deployment/first-app --to-revision=1`
+  - To go back to specific revision `kubectl rollout undo deployment/first-app --to-revision=1` here 1 is revision number we want to roll back to.
+
+## Deployment Using .yaml file
+
+- create a **deployment.yaml** file
+- deploy this file using command `kubectl apply -f=deployment.yaml`
+- check deployment using `kubectl get deployments` && `kubectl get pods`

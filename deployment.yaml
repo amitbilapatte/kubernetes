@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: second-app-deployment
+  name: second-app
   # labels:
   #   app: nginx
 spec:
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: second-node-app
-          image: amitreddy/kuberentes-node-app:2
+          image: amitreddy/second-app
         # - name: ...  --\\__ for adding multiple images
         # image: ...   --//
         # ports:

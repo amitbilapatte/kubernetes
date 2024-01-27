@@ -15,7 +15,7 @@
 
 ## Deployments
 
-- `Docker build -t node-app`
+- `docker build -t node-app`
 - `minikube start`
 - `minikube status`
 - `minikube stop`
@@ -80,3 +80,8 @@
 - create a **deployment.yaml** file
 - deploy this file using command `kubectl apply -f=deployment.yaml`
 - check deployment using `kubectl get deployments` && `kubectl get pods`
+
+- to  delete resources in declarative approach
+  `kubectl delete -f=deployment.yaml -f=service.yaml`
+  `kubectl delete -f=deployment.yaml,service.yaml`
+- all resouces created by deployment.yaml and ervice.yaml file will be deleted.

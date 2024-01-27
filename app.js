@@ -5,7 +5,7 @@ const app = express();
 app.get("/", (req, res) => {
   res.send(`
     <h1>Hello from this NodeJS app!</h1>
-    <h2>This Line is new!</h2>
+    <h2>This Lisdfne is new!</h2>
     <p>Try sending a request to /error and see what happens</p>
   `);
 });

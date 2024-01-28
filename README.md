@@ -85,3 +85,5 @@
   `kubectl delete -f=deployment.yaml -f=service.yaml`
   `kubectl delete -f=deployment.yaml,service.yaml`
 - all resouces created by deployment.yaml and ervice.yaml file will be deleted.
+
+- combine .yaml files

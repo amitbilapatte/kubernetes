@@ -86,4 +86,15 @@
   `kubectl delete -f=deployment.yaml,service.yaml`
 - all resouces created by deployment.yaml and ervice.yaml file will be deleted.
 
-- combine .yaml files
+- combine .yaml files into single file,here it is suggested that service file code should b written first and then other .yaml files code(deployment.yaml)
+- to check liveliness of container add this at the same level as `namme` & `image` inside of `spec:containers:`
+
+```yaml
+livenessProbe:
+  httpGet:
+    path:
+    port: 8080
+  periodSeconds: 10 #time for how often to check deployment liveliness
+  initialDelaySeconds: 5 #waittime to check before first deployment
+imagePullPolicy: always #it will always check for new latest image before every new deployment
+```

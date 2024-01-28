@@ -1,3 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: second-app
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+    # - protocol: "TCP"
+    #   port: 443
+    #   targetPort: 443
+  type: LoadBalancer
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,8 +28,6 @@ spec:
     matchLabels:
       app: second-app
       tier: backend
-    # matchExpressions:
-    #   - { key: app, operator: In, values: [second-app. first-app] } #other operators are `In,NotIn,Exists,DoesNotExists`
   template:
     metadata:
       labels:
@@ -22,13 +37,6 @@ spec:
       containers:
         - name: second-node-app
           image: amitreddy/second-app
-          livenessProbe:
-            httpGet:
-              path:
-              port: 8080
-            periodSeconds: 10 #time for how often to check deployment liveliness
-            initialDelaySeconds: 5 #waittime to check before first deployment
-          imagePullPolicy: always #it will always check for new latest image before every new deployment
         # - name: ...  --\\__ for adding multiple images
         # image: ...   --//
         # ports:
